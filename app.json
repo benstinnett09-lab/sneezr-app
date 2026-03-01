@@ -12,7 +12,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Sneezr uses the camera to attach photographic evidence to nasal events.",
+        "NSPhotoLibraryUsageDescription": "Sneezr uses the photo library to attach evidence to nasal events."
+      }
     },
     "android": {
       "adaptiveIcon": {
