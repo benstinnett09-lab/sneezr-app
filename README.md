@@ -19,7 +19,7 @@ The app is configured for static web export and deployment on Vercel.
   `npm run build:web` (runs `expo export --platform web`)
 
 - **Config:**  
-  - `app.config.js` sets `expo.web.output` to `"static"` so the export is static.  
+  - `app.config.js` sets `expo.web.output` to `"single"` (SPA: one `index.html`); use `"static"` only if you use Expo Router with static routes.  
   - `vercel.json` sets `outputDirectory` to `"dist"` and rewrites all routes to `/index.html` for SPA routing.
 
 ### Deploying to Vercel

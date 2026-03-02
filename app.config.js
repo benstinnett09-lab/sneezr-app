@@ -6,7 +6,7 @@ module.exports = {
     ...base.expo,
     web: {
       ...base.expo.web,
-      output: 'static',
+      output: 'single',
     },
     extra: {
       supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL || '',
