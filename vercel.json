@@ -1,5 +1,9 @@
 {
   "buildCommand": "npm run build:web",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/_expo/:path*", "destination": "/_expo/:path*" },
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
