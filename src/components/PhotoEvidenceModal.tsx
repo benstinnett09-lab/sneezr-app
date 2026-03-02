@@ -11,6 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppText } from './ui';
 import { colors, spacing } from '../theme';
 import { formatAbsolute } from '../utils/date';
+import { usePhotoDisplayUrl } from '../hooks/usePhotoDisplayUrl';
 import type { SneezeEvent } from '../state/types';
 
 export interface PhotoEvidenceModalProps {
@@ -25,6 +26,7 @@ export function PhotoEvidenceModal({
   onClose,
 }: PhotoEvidenceModalProps) {
   const { width, height } = useWindowDimensions();
+  const displayUrl = usePhotoDisplayUrl(event?.photoUrl);
 
   if (!event) return null;
 
@@ -47,7 +49,7 @@ export function PhotoEvidenceModal({
           <View style={[styles.media, { width, height: height - 120 }]}>
             {event.photoUrl ? (
               <Image
-                source={{ uri: event.photoUrl }}
+                source={{ uri: displayUrl ?? event.photoUrl }}
                 style={[styles.image, { width, height: height - 120 }]}
                 resizeMode="contain"
               />

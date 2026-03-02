@@ -3,7 +3,7 @@ export { signInAnonymously, getSession, getCurrentUserId, signOut, clearLocalCac
 export type { AuthResult, SignOutResult } from './auth';
 export { boot } from './boot';
 export type { BootResult } from './boot';
-export { createSneeze, listSneezes } from './sneezes';
-export type { CreateSneezeResult, ListSneezesResult } from './sneezes';
+export { createSneeze, listSneezes, updateSneezeAssessment } from './sneezes';
+export type { CreateSneezeResult, ListSneezesResult, UpdateSneezeAssessmentResult } from './sneezes';
 export { uploadSneezePhoto } from './storage';
 export type { UploadSneezePhotoResult } from './storage';

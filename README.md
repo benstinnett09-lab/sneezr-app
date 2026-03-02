@@ -1,37 +1,40 @@
 # Sneezr
 
-A serious scientific logging tool for nasal events. Expo (React Native) + TypeScript + Supabase.
+Nasal event telemetry app — Expo (React Native) with web support.
 
-## Setup
+## Development
+
+- `npm start` — start Expo dev server
+- `npm run web` — run in browser
+- `npm run ios` / `npm run android` — run on device/simulator
+
+## Web static build (Vercel)
+
+The app is configured for static web export and deployment on Vercel.
+
+- **Build output directory:** `dist/`  
+  Running the web export produces a static site in `dist/`. Do not change this without updating `vercel.json` and the build command.
+
+- **Build command:**  
+  `npm run build:web` (runs `expo export --platform web`)
+
+- **Config:**  
+  - `app.config.js` sets `expo.web.output` to `"static"` so the export is static.  
+  - `vercel.json` sets `outputDirectory` to `"dist"` and rewrites all routes to `/index.html` for SPA routing.
+
+### Deploying to Vercel
+
+1. Set env vars in the Vercel project (e.g. `EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`).
+2. Connect the repo; Vercel will use `vercel.json` (build command and output directory).
+3. Deploy. The static site is served from `dist/`.
+
+### Local static preview
+
+After building:
 
 ```bash
-npm install
-cp .env.example .env
+npm run build:web
+npx serve dist
 ```
 
-Edit `.env` with your Supabase URL and anon key:
-
-- `EXPO_PUBLIC_SUPABASE_URL`
-- `EXPO_PUBLIC_SUPABASE_ANON_KEY`
-
-## Run
-
-```bash
-npx expo start
-```
-
-## Stack
-
-- **Expo** ~55, **React Native**, **TypeScript**
-- **React Navigation** (bottom tabs): Monitor, Event Log, Analysis, Subject
-- **Zustand** (local state), **Supabase** (auth, DB, storage)
-- Anonymous auth; events stored in `public.sneezes`; photos in bucket `sneeze-photos`
-
-## Screens
-
-- **Monitor** — Nasal activity readout, record event (photo optional), haptic + confirmation
-- **Event Log** — List events (timestamp, thumbnail, evidence label), tap for fullscreen photo viewer
-- **Analysis** — Stats (total, today, mean/day, peak hour, continuity index), activity-by-day table
-- **Subject** — Subject ID, total events, export data, clear cache, sign out
-
-See `docs/ARCHITECTURE.md` and `docs/SUPABASE.md` for structure and Supabase details.
+Then open the URL shown (e.g. http://localhost:3000).
